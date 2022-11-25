@@ -1,0 +1,40 @@
+export const typeDefs =gql`
+type Coche{
+    id:String!
+    model:String!
+    matricula:String!
+    precio:Int!
+    vendedor:Vendedor!
+}
+
+type Vendedor{
+    id:String!
+    nombre:String!
+    apellido:String!
+    coches:[Coche]!
+    concesionario:Concesionario!
+}
+
+type Concesionario{
+    vendedores:[Vendedor]!
+    id:String!
+    direccion:String!
+}
+
+type Query {
+    getCoche()
+    getCoche()
+    getVendedor()
+    getVendedor()
+    getConcesionario()
+} 
+
+type Mutation{
+    addVendedor()
+    addCoche()
+    asignarCoche()
+    asignarVendedor()
+    addConcesionario()
+    
+}
+`;
