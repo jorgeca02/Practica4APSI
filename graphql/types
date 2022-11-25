@@ -1,3 +1,5 @@
+import { gql } from 'https://deno.land/x/graphql_tag@0.0.1/mod.ts'
+
 export const typeDefs =gql`
 type Coche{
     id:String!
@@ -22,19 +24,18 @@ type Concesionario{
 }
 
 type Query {
-    getCoche()
-    getCoche()
-    getVendedor()
-    getVendedor()
-    getConcesionario()
+    getCoche(id:String!):Coche
+    getCoche(min:Int!,max:Int!):[Coche]!
+    getVendedor(id:String!)
+    getVendedor(nombre:String!)
+    getConcesionario(id:String!)
 } 
 
 type Mutation{
-    addVendedor()
-    addCoche()
-    asignarCoche()
-    asignarVendedor()
-    addConcesionario()
-    
+    addVendedor(nombre:String!,apellido:String!):Vendedor
+    addCoche(matricula:String!,modelo:String!,precio:Int!):Coche
+    asignarCoche(idCoche:String!,idVendedor:String!):Vendedor
+    asignarVendedor(idVendedor:String!,idConcesionario:String!):Concesionario
+    addConcesionario(direccion:String!):Concesionario
 }
 `;
